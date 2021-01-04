@@ -3,6 +3,10 @@ ifeq ($(CONFIG_ARCH_MSM8937), y)
 include $(srctree)/techpack/audio/config/msm8937auto.conf
 export $(shell sed 's/=.*//' $(srctree)/techpack/audio/config/msm8937auto.conf)
 endif
+ifeq ($(CONFIG_ARCH_MSM8953), y)
+include $(srctree)/techpack/audio/config/msm8953auto.conf
+export $(shell sed 's/=.*//' $(srctree)/techpack/audio/config/msm8953auto.conf)
+endif
 ifeq ($(CONFIG_ARCH_SDM845), y)
 include $(srctree)/techpack/audio/config/sdm845auto.conf
 export $(shell sed 's/=.*//' $(srctree)/techpack/audio/config/sdm845auto.conf)
@@ -29,6 +33,10 @@ LINUXINCLUDE    += \
 ifeq ($(CONFIG_ARCH_MSM8937), y)
 LINUXINCLUDE    += \
                 -include $(srctree)/techpack/audio/config/msm8937autoconf.h
+endif
+ifeq ($(CONFIG_ARCH_MSM8953), y)
+LINUXINCLUDE    += \
+                -include $(srctree)/techpack/audio/config/msm8953autoconf.h
 endif
 ifeq ($(CONFIG_ARCH_SDM845), y)
 LINUXINCLUDE    += \
