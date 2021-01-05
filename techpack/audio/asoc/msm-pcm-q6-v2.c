@@ -393,7 +393,7 @@ static int msm_pcm_playback_prepare(struct snd_pcm_substream *substream)
 			ret = q6asm_open_write_v5(prtd->audio_client,
 				fmt_type, bits_per_sample);
 		else
-#ifdef CONFIG_MONTANA_DTB
+#if defined(CONFIG_MONTANA_DTB) || defined(CONFIG_SANDERS_DTB)
 			ret = q6asm_open_write_v3(prtd->audio_client,
 				fmt_type, bits_per_sample);
 #else
@@ -451,7 +451,7 @@ static int msm_pcm_playback_prepare(struct snd_pcm_substream *substream)
 				sample_word_size, ASM_LITTLE_ENDIAN,
 				DEFAULT_QF);
 		} else {
-#ifdef CONFIG_MONTANA_DTB
+#if defined(CONFIG_MONTANA_DTB) || defined(CONFIG_SANDERS_DTB)
 			ret = q6asm_media_format_block_multi_ch_pcm_v3(
 				prtd->audio_client, runtime->rate,
 				runtime->channels, !prtd->set_channel_map,
@@ -531,7 +531,7 @@ static int msm_pcm_capture_prepare(struct snd_pcm_substream *substream)
 				FORMAT_LINEAR_PCM,
 				bits_per_sample, false, ENC_CFG_ID_NONE);
 		else
-#ifdef CONFIG_MONTANA_DTB
+#if defined(CONFIG_MONTANA_DTB) || defined(CONFIG_SANDERS_DTB)
 			ret = q6asm_open_read_v3(prtd->audio_client,
 				FORMAT_LINEAR_PCM,
 				bits_per_sample);
@@ -619,7 +619,7 @@ static int msm_pcm_capture_prepare(struct snd_pcm_substream *substream)
 						ASM_LITTLE_ENDIAN,
 						DEFAULT_QF);
 	else
-#ifdef CONFIG_MONTANA_DTB
+#if defined(CONFIG_MONTANA_DTB) || defined(CONFIG_SANDERS_DTB)
 		ret = q6asm_enc_cfg_blk_pcm_format_support_v3(prtd->audio_client,
 						prtd->samp_rate,
 						prtd->channel_mode,

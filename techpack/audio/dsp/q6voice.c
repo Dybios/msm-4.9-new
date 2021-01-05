@@ -4357,7 +4357,7 @@ static int voice_get_avcs_version_per_service(uint32_t service_id)
 		return -EINVAL;
 	}
 
-#ifdef CONFIG_MONTANA_DTB
+#if defined(CONFIG_MONTANA_DTB) || defined(CONFIG_SANDERS_DTB)
 	common.is_avcs_version_queried = true;
 	return CVP_VERSION_1;
 #endif
